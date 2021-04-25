@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+//Global Variables
 var choiceUpper = [
   "A",
   "B",
@@ -77,8 +78,7 @@ var choiceSpec = [
 var everyChoice = [];
 
 function generatePassword() {
-  //Capture User Inputs
-  //Generate the password.
+  //Created a variable for the password length and prompts the user to enter a desired password length from 8-128.
   var passwordLength = prompt(
     "How long would you like your password to be? (Min: 8, Max: 128)"
   );
@@ -89,6 +89,7 @@ function generatePassword() {
     generatePassword();
   } else passwordLength >= 8 || passwordLength <= 128;
 
+  //Created confirms that will ask which charactes they will like to use in their password.
   var randomUpper = confirm(
     "Would you like to include upper case letters in your password?"
   );
@@ -102,6 +103,7 @@ function generatePassword() {
     "Would you like to include special characters in your password?"
   );
 
+  //Establishes boolean operations, that if true from the confirms above, will take the elements of their respective arrays and place them into a new array
   if (randomUpper === true) {
     everyChoice.push(...choiceUpper);
   }
@@ -114,7 +116,6 @@ function generatePassword() {
   if (randomSpec === true) {
     everyChoice.push(...choiceSpec);
   }
-  console.log(everyChoice);
 }
 
 // Write password to the #password input
