@@ -77,6 +77,8 @@ var choiceSpec = [
 ];
 var everyChoice = [];
 
+var finalPassword = "";
+
 function generatePassword() {
   //Created a variable for the password length and prompts the user to enter a desired password length from 8-128.
   var passwordLength = prompt(
@@ -87,8 +89,7 @@ function generatePassword() {
       "Password is not within set length parameters, please select again"
     );
     generatePassword();
-  } else passwordLength >= 8 || passwordLength <= 128;
-
+  }
   //Created confirms that will ask which charactes they will like to use in their password.
   var randomUpper = confirm(
     "Would you like to include upper case letters in your password?"
@@ -102,7 +103,10 @@ function generatePassword() {
   var randomSpec = confirm(
     "Would you like to include special characters in your password?"
   );
-
+  if (!randomLower && !randomNum && !randomSpec && !randomUpper) {
+    alert("One character type must be selected");
+    generatePassword();
+  }
   //Establishes boolean operations, that if true from the confirms above, will take the elements of their respective arrays and place them into a new array
   if (randomUpper === true) {
     everyChoice.push(...choiceUpper);
@@ -116,14 +120,12 @@ function generatePassword() {
   if (randomSpec === true) {
     everyChoice.push(...choiceSpec);
   }
-  //Picks random
-  for (let i = passwordLength; i < everyChoice.length; i++) {
-    return everyChoice[Math.floor(Math.random() * everyChoice.length)];
+
+  //Picks random elements from everyChoice array that was populated above.
+  for (let i = 0; i <= passwordLength; i++) {
+    return (finalPassword +=
+      everyChoice[Math.floor(Math.random() * everyChoice.length)]);
   }
-  if (i <= passwordLength) {
-    return everyChoice[Math.floor(Math.random() * everyChoice.length)];
-  } else i > passwordLength;
-  return;
 }
 
 // Write password to the #password input
