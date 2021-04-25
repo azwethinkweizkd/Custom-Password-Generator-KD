@@ -74,7 +74,7 @@ var choiceSpec = [
   "[",
   "]",
 ];
-var passwordString = "";
+var everyChoice = [];
 
 function generatePassword() {
   //Capture User Inputs
@@ -89,11 +89,34 @@ function generatePassword() {
     generatePassword();
   } else passwordLength >= 8 || passwordLength <= 128;
 
-  // var randomUpper = confirm(
-  //   "Would you like to include upper case letters in your password?"
-  // );
-  // if (true) {
+  var randomUpper = confirm(
+    "Would you like to include upper case letters in your password?"
+  );
+  var randomLower = confirm(
+    "Would you like to include lower case letters in your password?"
+  );
+  var randomNum = confirm(
+    "Would you like to include numbers in your password?"
+  );
+  var randomSpec = confirm(
+    "Would you like to include special characters in your password?"
+  );
+
+  if (randomUpper === true) {
+    everyChoice.push(...choiceUpper);
+  }
+  if (randomLower === true) {
+    everyChoice.push(...choiceLower);
+  }
+  if (randomNum === true) {
+    everyChoice.push(...choiceNum);
+  }
+  if (randomSpec === true) {
+    everyChoice.push(...choiceSpec);
+  }
+  console.log(everyChoice);
 }
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
