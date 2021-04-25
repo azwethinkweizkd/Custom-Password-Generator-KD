@@ -116,6 +116,14 @@ function generatePassword() {
   if (randomSpec === true) {
     everyChoice.push(...choiceSpec);
   }
+  //Picks random
+  for (let i = passwordLength; i < everyChoice.length; i++) {
+    return everyChoice[Math.floor(Math.random() * everyChoice.length)];
+  }
+  if (i <= passwordLength) {
+    return everyChoice[Math.floor(Math.random() * everyChoice.length)];
+  } else i > passwordLength;
+  return;
 }
 
 // Write password to the #password input
