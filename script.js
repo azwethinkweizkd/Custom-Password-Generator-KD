@@ -122,10 +122,11 @@ function generatePassword() {
   }
 
   //Picks random elements from everyChoice array that was populated above.
-  for (let i = 0; i <= passwordLength; i++) {
-    return (finalPassword +=
-      everyChoice[Math.floor(Math.random() * everyChoice.length)]);
+  for (let i = 0; i < passwordLength; i++) {
+    finalPassword +=
+      everyChoice[Math.floor(Math.random() * everyChoice.length)];
   }
+  return finalPassword;
 }
 
 // Write password to the #password input
